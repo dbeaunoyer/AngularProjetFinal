@@ -1,0 +1,56 @@
+<body>
+    
+<button (click)="onSelect(undefined)" class = "ajout container">Ajouter forfait</button>
+
+<table mat-table #forfaitsTable [dataSource]="forfaits" class = "container tableau">
+
+    <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef> id </th>
+        <td mat-cell *matCellDef="let forfait"> {{forfait.id}} </td>
+    </ng-container>
+    <ng-container matColumnDef="datedepart">
+        <th mat-header-cell *matHeaderCellDef> Date de départ </th>
+        <td mat-cell *matCellDef="let forfait"> {{forfait.datedepart}} </td>
+    </ng-container>
+    <ng-container matColumnDef="dateretour">
+        <th mat-header-cell *matHeaderCellDef> Date de retour </th>
+        <td mat-cell *matCellDef="let forfait"> {{forfait.dateretour}} </td>
+    </ng-container>
+    <ng-container matColumnDef="destination">
+        <th mat-header-cell *matHeaderCellDef> Destination </th>
+        <td mat-cell *matCellDef="let forfait"> {{forfait.destination}} </td>
+    </ng-container>
+    <ng-container matColumnDef="villedepart">
+        <th mat-header-cell *matHeaderCellDef> Ville Depart </th>
+        <td mat-cell *matCellDef="let forfait"> {{forfait.villedepart}} </td>
+    </ng-container>
+    <ng-container matColumnDef="nomHotel">
+        <th mat-header-cell *matHeaderCellDef> Nom de l'hôtel </th>
+        <td mat-cell *matCellDef="let forfait"> {{forfait.hotel.nom}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef> </th>
+        <td mat-cell *matCellDef="let forfait" class="boutonsAction">
+            <button (click)="onSelect(forfait)" mat-button><i class="bi bi-pencil-square"></i></button>
+            <button (click)="onDelete(forfait)" mat-button><i class="bi bi-shield-x"></i></button>
+        </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+    <tr mat-row *matRowDef="let myRowData; columns: columnsToDisplay"></tr>
+   
+   
+   
+    <!---'id',
+    'dateDepart',
+    'dateRetour',
+    'destination',
+    'villeDepart',
+    'Nom-Hotel',
+    'BOUTONS',
+
+    --->
+
+</table>
+</body>

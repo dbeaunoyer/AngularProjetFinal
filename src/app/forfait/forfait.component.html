@@ -1,0 +1,64 @@
+
+  <!-- Angular Flex colonne/commence de la gauche / 5px de gap entre chaque cards --->
+<div class="container" div fxLayout="row wrap"  fxLayoutAlign="flex-start" fxLayoutGap="2px">
+  <!-- Boucle  --->
+  <ng-container *ngFor="let forfait of forfaits">
+  <mat-card class="example-card d-flex flex-column">
+    <mat-card-header>
+      <!--  Nom de l'hotel  --->
+      <mat-card-title>{{ forfait.hotel.nom }}</mat-card-title>
+           <!--  Coordonnes  --->
+      <mat-card-subtitle>
+        {{ forfait.hotel.coordonnees }}
+      </mat-card-subtitle>
+      <!-- Viles départ / destination  --->
+       <mat-card-subtitle>de {{ forfait.villedepart }} à {{ forfait.destination }}</mat-card-subtitle> </mat-card-header>
+       <!-- Dates  --->
+       <p>{{ forfait.datedepart }} au {{ forfait.dateretour }}</p>
+       <!-- nombres de chambres  --->
+
+      <p>{{ forfait.hotel.chambres }} chambres</p>
+      <!-- Prix  --->
+      <p>Prix: {{ forfait.prix }}$</p>
+      <!-- Photo retiré --->
+      <!-- Caractérisques hotel  --->
+      <p class = "bold">Caractéristiques:</p>
+      <p>{{ forfait.hotel.caracteristiques }}</p>
+        <!-- Component étoiles --->
+     <mat-card-content>
+
+         <!--   https://angular.io/api/common/NgSwitchCase     ??? --->
+        <mat-card-subtitle [ngSwitch]="forfait.hotel.etoiles">
+            <div *ngSwitchCase="5">
+            <app-star></app-star>
+            <app-star></app-star>
+            <app-star></app-star>
+            <app-star></app-star>
+            <app-star></app-star>
+          </div>
+           <div *ngSwitchCase="4">
+            <app-star></app-star>
+            <app-star></app-star>
+            <app-star></app-star>
+            <app-star></app-star>
+          </div>
+           <div *ngSwitchCase="3">
+            <app-star></app-star>
+            <app-star></app-star>
+            <app-star></app-star>
+          </div>
+           <div *ngSwitchCase="2">
+            <app-star></app-star>
+            <app-star></app-star>
+          </div>
+          <div *ngSwitchCase="1">
+            <app-star></app-star>
+          </div>
+        </mat-card-subtitle>
+    </mat-card-content>
+    <!-- Button réservation --->
+    <button mat-raised-button class = "mt-auto">Réservation</button>
+  </mat-card>
+</ng-container>
+   <!-- Fin de la boucle --->
+</div>
